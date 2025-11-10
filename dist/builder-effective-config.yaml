@@ -1,0 +1,6 @@
+directories:
+  output: dist
+  buildResources: build
+appId: com.alnajat_table.app
+files: []
+electronVersion: 39.1.1

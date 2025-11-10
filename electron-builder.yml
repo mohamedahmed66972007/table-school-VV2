@@ -1,0 +1,53 @@
+appId: com.school.schedule
+productName: SchoolSchedule
+
+copyright: Copyright © 2025
+
+directories:
+  output: build
+  buildResources: resources
+
+# تخطي إعادة بناء better-sqlite3
+
+files:
+  - "**/*"
+  - "!**/{.git,node_modules,.github,src,public}/**/*"
+  - "!**/*.{iml,o,hprof,orig,pyc,pyo,rbc,swp,csproj,sln,xproj}*"
+  - "!**/{.DS_Store,.git,.hg,.svn,CVS,RCS,SCCS,.gitignore,.gitattributes}*"
+  - "!**/{__pycache__,thumbs.db,.flowconfig,.idea,.vs,.nyc_output}*"
+  - "!**/{appveyor.yml,.travis.yml,circle.yml}*"
+  - "!**/{npm-debug.log,yarn.lock,.yarn-metadata.json,yarn-error.log}*"
+  - "electron-main.js"
+  - "electron-preload.js"
+  - "dist/**/*"
+  - "client/public/**/*"
+  - "package.json"
+
+extraResources:
+  - from: "client/public"
+    to: "public"
+    filter:
+      - "**/*"
+
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+  #icon: client/public/icon.png
+  artifactName: "${productName}-${version}-${arch}.${ext}"
+
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: always
+  createStartMenuShortcut: true
+  shortcutName: "SchoolSchedule"
+  perMachine: false
+  deleteAppDataOnUninstall: false
+#  installerIcon: client/public/icon.png
+#  uninstallerIcon: client/public/icon.png
+  license: LICENSE.txt
+  language: "1025"
+
+publish: null
